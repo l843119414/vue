@@ -1,6 +1,6 @@
 <template>
 <el-container>
-  <el-aside width="60px" style="height: 100vh">
+  <el-aside width="65px" style="height: 100vh">
     <router-view name="nav" />
   </el-aside>
 
