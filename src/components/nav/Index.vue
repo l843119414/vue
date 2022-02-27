@@ -1,16 +1,15 @@
 <template lang="html">
   <div id='nav' class="">
     <div id="logo">
-      <a href="#/">
-        <i class="el-icon-platform-eleme"></i>
-      </a>
+        <a href="#/">
+          <i class="el-icon-platform-eleme"></i>
+        </a>
     </div>
-
     <el-menu :router="true" :default-active="this.$route.path" class="el-menu-vertical"   :collapse="true" active-text-color="#fff">
       <template  v-for="(item,index) in navs" >
         <el-submenu  v-if="item.path.length !== 0" :index="item.url" :key="index">
           <template slot="title">
-            <i :class="item.logo"></i>
+            <i class="nav_log" :class="item.logo"></i>
             <span slot="title">{{ item.title }} {{ item.path.length}}</span>
           </template>
           <el-menu-item-group >
@@ -18,14 +17,15 @@
           </el-menu-item-group>
         </el-submenu>
         <el-menu-item v-if="item.path.length === 0" :index="item.url" :key="index">
-          <i :class="item.logo"></i>
+          <i class="nav_log" :class="item.logo"></i>
           <span slot="title">{{ item.title }} {{ item.path.length}}</span>
         </el-menu-item>
       </template>
     </el-menu>
-
+    <div id="nav_footer">
+      <a href="#"><el-avatar> {{ this.user.name }} </el-avatar></a>
+    </div>
   </div>
-
 </template>
 
 <script>
@@ -97,7 +97,10 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      user: {
+        name: '赵'
+      }
     }
   }
 
@@ -112,16 +115,25 @@ export default {
 }
 
 #logo{
-  height: 50px;
+  height: 70px;
   width: 60px;
   text-align: center;
   padding: 30px 0 0 0;
 }
 #logo i{
-  font-size: 32px;
+  font-size: 48px;
   color: #fff;
 }
-.el-menu-vertical i{
+#nav_footer{
+  position: absolute;
+  bottom: 0px;
+  padding: 12px;
+}
+#nav_footer .el-avatar{
+  background-color: rgb(255, 159, 115);
+  color: #fff;
+}
+.el-menu-vertical i.nav_log{
   color: #fff;
   font-size: 24px;
 }
